@@ -1,0 +1,87 @@
+<div class="container py-2">
+  <div class="d-flex align-items-center gap-2 mb-4 border-bottom pb-3">
+    <span class="fs-4">🗑️</span>
+    <h4 class="fw-bold mb-0 text-dark">Eliminar Registro de <span class="text-danger">Alumno</span></h4>
+  </div>
+
+  <div class="alert alert-danger d-flex align-items-center gap-2 rounded-3 shadow-sm mb-4" role="alert">
+    <span class="fs-5">⚠️</span>
+    <div>
+      <strong>¿Estás seguro de que deseas eliminar este alumno?</strong> Esta acción no se puede deshacer y borrará permanentemente toda su información del sistema.
+    </div>
+  </div>
+
+  <form [formGroup]="frmAlumno" novalidate (ngSubmit)="eliminar()">
+    <div class="card border-light shadow-sm rounded-3 p-4 bg-light-subtle">
+      <div class="row g-4">
+
+        <div class="col-md-6">
+          <label class="form-label fw-bold text-secondary small text-uppercase tracking-wider mb-1">Cédula / Identificación</label>
+          <div class="fs-5 fw-semibold text-dark p-2 border-bottom border-light-subtle bg-white rounded-2 shadow-sm">
+            {{ frmAlumno.get('cedula')?.value || '—' }}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-bold text-secondary small text-uppercase tracking-wider mb-1">Correo Electrónico</label>
+          <div class="fs-5 fw-semibold text-dark p-2 border-bottom border-light-subtle bg-white rounded-2 shadow-sm text-truncate">
+            {{ frmAlumno.get('correo')?.value || '—' }}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-bold text-secondary small text-uppercase tracking-wider mb-1">Nombres</label>
+          <div class="fs-5 text-dark p-2 border-bottom border-light-subtle bg-white rounded-2 shadow-sm">
+            {{ frmAlumno.get('nombre')?.value || '—' }}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-bold text-secondary small text-uppercase tracking-wider mb-1">Apellidos</label>
+          <div class="fs-5 text-dark p-2 border-bottom border-light-subtle bg-white rounded-2 shadow-sm">
+            {{ frmAlumno.get('apellido')?.value || '—' }}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-bold text-secondary small text-uppercase tracking-wider mb-1">Teléfono de Contacto</label>
+          <div class="fs-5 text-dark p-2 border-bottom border-light-subtle bg-white rounded-2 shadow-sm">
+            {{ frmAlumno.get('telefono')?.value || '—' }}
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label fw-bold text-secondary small text-uppercase tracking-wider mb-1">Carrera</label>
+          <div class="fs-5 text-dark p-2 border-bottom border-light-subtle bg-white rounded-2 shadow-sm">
+            {{ frmAlumno.get('carrera')?.value || '—' }}
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label fw-bold text-secondary small text-uppercase tracking-wider mb-1">Nivel</label>
+          <div class="fs-5 text-center fw-bold text-success p-2 border-bottom border-light-subtle bg-white rounded-2 shadow-sm">
+            {{ frmAlumno.get('nivel')?.value || '—' }}
+          </div>
+        </div>
+
+        <div class="col-12">
+          <label class="form-label fw-bold text-secondary small text-uppercase tracking-wider mb-1">Fecha de Nacimiento</label>
+          <div class="fs-5 text-dark p-2 border-bottom border-light-subtle bg-white rounded-2 shadow-sm" style="max-width: 250px;">
+            {{ (frmAlumno.get('fecha_nacimiento')?.value ) || 'No registrada' }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+      <button type="button" (click)="cancelar()" class="btn btn-light rounded-pill px-4 fw-medium text-secondary shadow-sm">
+        Volver al Listado
+      </button>
+
+      <button type="submit" class="btn btn-danger rounded-pill px-4 fw-semibold text-white shadow-sm transition-all">
+        Confirmar y Eliminar Alumno
+      </button>
+    </div>
+  </form>
+</div>

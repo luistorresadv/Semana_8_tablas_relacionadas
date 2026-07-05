@@ -1,0 +1,42 @@
+<div class="container py-4">
+  <h4 class="fw-bold text-dark mb-4">Editar Matrícula Registrada</h4>
+
+  <form [formGroup]="frmMatricula" (ngSubmit)="guardar()">
+    <div class="row g-3">
+      
+      <div class="col-md-6">
+        <label class="form-label fw-semibold text-secondary">Alumno Asignado</label>
+        <select class="form-select form-select-lg" formControlName="alumnoId">
+          @for (al of listaAlumnos; track al.id) {
+            <option [value]="al.id">{{ al.cedula }} - {{ al.apellido }} {{ al.nombre }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold text-secondary">Periodo Académico</label>
+        <input type="text" class="form-control form-control-lg" formControlName="periodo">
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold text-secondary">Fecha de Matrícula</label>
+        <input type="date" class="form-control form-control-lg" formControlName="fecha_matricula">
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold text-secondary">Estado de Matrícula</label>
+        <select class="form-select form-select-lg" formControlName="estado">
+          <option value="Activa">Activa</option>
+          <option value="Anulada">Anulada</option>
+          <option value="Finalizada">Finalizada</option>
+        </select>
+      </div>
+
+      <div class="col-12 pt-3 d-flex gap-2">
+        <button type="button" (click)="cancelar()" class="btn btn-light px-4 rounded-pill">Cancelar</button>
+        <button type="submit" class="btn btn-primary px-4 rounded-pill">Guardar Cambios</button>
+      </div>
+
+    </div>
+  </form>
+</div>

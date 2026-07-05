@@ -1,0 +1,33 @@
+<div class="container py-4">
+  <h4 class="fw-bold text-dark mb-4">Generar Nueva Matrícula</h4>
+
+  <form [formGroup]="frmMatricula" (ngSubmit)="grabar()">
+    <div class="row g-3">
+      
+      <div class="col-md-6">
+        <label class="form-label fw-semibold text-secondary">Seleccionar Alumno</label>
+        <select class="form-select form-select-lg" formControlName="alumnoId">
+          <option value="" disabled selected>Elija un alumno...</option>
+          @for (al of listaAlumnos; track al.id) {
+            <option [value]="al.id">{{ al.cedula }} - {{ al.apellido }} {{ al.nombre }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold text-secondary">Periodo Académico</label>
+        <input type="text" class="form-control form-control-lg" placeholder="Ej. Sexto Semestre 2026" formControlName="periodo">
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold text-secondary">Fecha de Matrícula</label>
+        <input type="date" class="form-control form-control-lg" formControlName="fecha_matricula">
+      </div>
+
+      <div class="col-12 pt-3">
+        <button type="submit" class="btn btn-success px-4 rounded-pill">Registrar Matrícula</button>
+      </div>
+
+    </div>
+  </form>
+</div>
